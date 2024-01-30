@@ -1,0 +1,32 @@
+﻿@model UserViewModel
+@{
+    ViewData["Title"] = "Index";
+    string pictureUrl = Model.PictureUrl;
+    string src = string.IsNullOrEmpty(pictureUrl) ? "/UserPictures/defaultimage.jpg" : $"/UserPictures/{pictureUrl}";
+}
+
+<h1 class="pb-3">Merhaba @User.Identity.Name </h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Picture</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                
+                <user-picture picture-url="@Model.PictureUrl"></user-picture>
+                @* <img src="@src" width="100" height="100" /> *@
+            </td>
+            <td>@Model.UserName</td>
+            <td>@Model.Email</td>
+            <td>@Model.PhoneNumber</td>
+        </tr>
+    </tbody>
+</table>
+

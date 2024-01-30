@@ -1,0 +1,69 @@
+﻿@model UserEditViewModel
+@{
+    ViewData["Title"] = "UserEdit";
+}
+
+<div class="col-md-8 offset-md-2">
+    <div class="row">
+        <h1>Şifremi Unuttum</h1>
+        <br />
+        <br />
+        <br />
+        @if (TempData["UserEditMessage"] != null)
+        {
+            <div class="alet alert-success mb-4" role="alert">
+                @TempData["UserEditMessage"]
+            </div>
+        }
+        <form method="post" asp-controller="Member" asp-action="UserEdit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+            <div class="mb-3">
+                <label for="UserName" class="form-label">UserName</label>
+                <input type="text" asp-for=UserName class="form-control" id="UserName">
+            </div>
+            <div class="mb-3">
+                <label for="Email" class="form-label">Email</label>
+                <input type="email" asp-for=Email class="form-control" id="Email">
+            </div>
+            <div class="mb-3">
+                <label for="PhoneNumber" class="form-label">PhoneNumber</label>
+                <input type="tel" asp-for=PhoneNumber class="form-control" id="PhoneNumber">
+            </div>
+            <div class="mb-3">
+                <label for="BirthDate" class="form-label">BirthDate</label>
+                <input type="date" asp-for=BirthDate class="form-control" id="BirthDate">
+            </div>
+            <div class="mb-3">
+                <label for="City" class="form-label">City</label>
+                <input type="text" asp-for=City class="form-control" id="City">
+            </div>
+            <div class="mb-3">
+                <label for="Gender" class="form-label">Gender</label>
+                <select class="form-control" asp-for=Gender asp-items="ViewBag.GenderList">
+                    <option value="">Cinsiyet Seçiniz</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="Picture" class="form-label">Picture</label>
+                <input type="file" asp-for=Picture class="form-control" id="Picture">
+            </div>
+
+
+
+
+            <button type="submit" class="btn btn-primary">Bilgileri Güncelle</button>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
+
+
+
+

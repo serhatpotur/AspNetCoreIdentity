@@ -1,0 +1,54 @@
+﻿@model SignUpViewModel
+@{
+    ViewData["Title"] = "SignUp";
+}
+
+
+<div class="col-md-8 offset-md-2">
+    <div class="row">
+        <h1>Kayıt Ol</h1>
+        <br />
+        <br />
+        <br />
+        @if (TempData["Message"] != null)
+        {
+            <div class="alet alert-success mb-4" role="alert">
+                @TempData["Message"]
+            </div>
+        }
+        <form asp-controller="Auth" asp-action="SignUp" method="post">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+            <div class="mb-3">
+                <label for="username" class="form-label">UserName</label>
+                <input type="text" asp-for=UserName class="form-control" id="username" aria-describedby="usernameHelp">
+                @* <div id="usernameHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" asp-for="Email" class="form-control" id="email" aria-describedby="emailHelp">
+                @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+            </div>
+            <div class="mb-3">
+                <label for="phonenumber" class="form-label">Phone Number</label>
+                <input type="tel" asp-for=PhoneNumber class="form-control" id="phonenumber" aria-describedby="phonenumberHelp">
+                @* <div id="phonenumberHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" asp-for=Password class="form-control" id="password">
+            </div>
+            <div class="mb-3">
+                <label for="passwordconfirm" class="form-label">Confirm Password</label>
+                <input type="password" asp-for=ConfirmPassword class="form-control" id="passwordconfirm">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

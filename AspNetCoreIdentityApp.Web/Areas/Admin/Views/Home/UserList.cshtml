@@ -1,0 +1,35 @@
+﻿@model IEnumerable<UserListViewModel>
+@{
+    ViewData["Title"] = "UserList";
+}
+
+<h1>UserList</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>UserName</th>
+            <th>User Email</th>
+            <th>User Roles</th>
+            <th>Rol İşlemleri</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>
+                    <user-roles-name user-id="@user.Id"></user-roles-name>
+                </td>
+                <td>
+                    <a asp-controller="Roles" asp-action="AssignRoleToUser" asp-route-userId="@user.Id">Rol Ata</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

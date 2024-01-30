@@ -1,0 +1,33 @@
+﻿@model RoleAddViewModel
+
+@{
+    ViewData["Title"] = "RoleAdd";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>RoleAdd</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <form asp-action="RoleAdd">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-4">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-2">
+                <input type="submit" value="Rol Ekle" class="btn btn-primary w-49" />
+                <a asp-action="Index" class="btn btn-warning w-49">Rol Listsine Dön</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

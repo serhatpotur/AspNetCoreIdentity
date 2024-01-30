@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNetCore.Authorization
+
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@inject IAuthorizationService service
+
+@if (service.AuthorizeAsync(User, "OrderBasicPermission").Result.Succeeded)
+{
+    <button>Permission.Order.Read</button>
+}
+@if (service.AuthorizeAsync(User, "OrderAdvencedPermission").Result.Succeeded)
+{
+    <button>Permission.Order.Create</button>
+}
+@if (service.AuthorizeAsync(User, "OrderAdminPermission").Result.Succeeded)
+{
+    <button>Permission.Order.Delete</button>
+}
+
+
+

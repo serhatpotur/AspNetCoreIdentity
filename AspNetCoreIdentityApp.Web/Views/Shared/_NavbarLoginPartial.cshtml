@@ -1,0 +1,66 @@
+﻿@using System.Security.Claims
+<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+    <ul class="navbar-nav flex-grow-1">
+
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="SignUp">SignUp</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="SignIn">SignIn</a>
+            </li>
+            
+        }
+        else
+        {
+
+            @if (User.HasClaim(x => x.Value == "Admin" && x.Type == ClaimTypes.Role))
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a>
+                </li>
+            }
+           
+
+
+
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="UserEdit">@User.Identity.Name</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-route-returnurl="/Home/Index" asp-controller="Auth" asp-action="Logout2">Logout2</a>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="PasswordChange">PasswordChange</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="UserEdit">UserEdit</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="UserClaims">User Claims</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="IstanbulAndAnkaraPage">IstanbulAndAnkaraPage</a>
+            </li>   
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="ExchangePage">ExchangePage</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Index">Permission Read Page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Add">Permission Add Or Update Page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Delete">Permission Delete Page</a>
+            </li>
+           
+        }
+
+    </ul>
+</div>
